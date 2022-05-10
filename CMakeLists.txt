@@ -25,7 +25,7 @@ endif()
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 project(spirv-tools)
-enable_testing()
+#enable_testing()
 set(SPIRV_TOOLS "SPIRV-Tools")
 
 include(GNUInstallDirs)
@@ -288,9 +288,9 @@ endif()
 # Defaults to OFF if the user didn't set it.
 option(SPIRV_SKIP_EXECUTABLES
   "Skip building the executable and tests along with the library"
-  ${SPIRV_SKIP_EXECUTABLES})
+  ON)
 option(SPIRV_SKIP_TESTS
-  "Skip building tests along with the library" ${SPIRV_SKIP_TESTS})
+  "Skip building tests along with the library" ON)
 if ("${SPIRV_SKIP_EXECUTABLES}")
   set(SPIRV_SKIP_TESTS ON)
 endif()
@@ -334,9 +334,6 @@ endif()
 add_subdirectory(source)
 add_subdirectory(tools)
 
-add_subdirectory(test)
-add_subdirectory(examples)
-
 if(ENABLE_SPIRV_TOOLS_INSTALL)
   install(
     FILES
@@ -348,12 +345,6 @@ if(ENABLE_SPIRV_TOOLS_INSTALL)
     DESTINATION
       ${CMAKE_INSTALL_INCLUDEDIR}/spirv-tools/)
 endif(ENABLE_SPIRV_TOOLS_INSTALL)
-
-if (NOT "${SPIRV_SKIP_TESTS}")
-  add_test(NAME spirv-tools-copyrights
-           COMMAND ${PYTHON_EXECUTABLE} utils/check_copyright.py
-           WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-endif()
 
 set(SPIRV_LIBRARIES "-lSPIRV-Tools-opt -lSPIRV-Tools -lSPIRV-Tools-link")
 set(SPIRV_SHARED_LIBRARIES "-lSPIRV-Tools-shared")
