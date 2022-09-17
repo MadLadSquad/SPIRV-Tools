@@ -744,9 +744,10 @@ void ValidationState_t::RegisterStorageClassConsumer(
               return true;
             });
   } else if (storage_class == SpvStorageClassShaderRecordBufferKHR) {
+    std::string errorVUID = VkErrorID(7119);
     function(consumer->function()->id())
         ->RegisterExecutionModelLimitation(
-            [](SpvExecutionModel model, std::string* message) {
+            [errorVUID](SpvExecutionModel model, std::string* message) {
               if (model != SpvExecutionModelRayGenerationKHR &&
                   model != SpvExecutionModelIntersectionKHR &&
                   model != SpvExecutionModelAnyHitKHR &&
@@ -755,6 +756,7 @@ void ValidationState_t::RegisterStorageClassConsumer(
                   model != SpvExecutionModelMissKHR) {
                 if (message) {
                   *message =
+                      errorVUID +
                       "ShaderRecordBufferKHR Storage Class is limited to "
                       "RayGenerationKHR, IntersectionKHR, AnyHitKHR, "
                       "ClosestHitKHR, CallableKHR, and MissKHR execution model";
@@ -1968,8 +1970,8 @@ std::string ValidationState_t::VkErrorID(uint32_t id,
       return VUID_WRAP(VUID-StandaloneSpirv-None-04637);
     case 4638:
       return VUID_WRAP(VUID-StandaloneSpirv-None-04638);
-    case 4639:
-      return VUID_WRAP(VUID-StandaloneSpirv-None-04639);
+    case 7321:
+      return VUID_WRAP(VUID-StandaloneSpirv-None-07321);
     case 4640:
       return VUID_WRAP(VUID-StandaloneSpirv-None-04640);
     case 4641:
@@ -2038,6 +2040,8 @@ std::string ValidationState_t::VkErrorID(uint32_t id,
       return VUID_WRAP(VUID-StandaloneSpirv-CallableDataKHR-04704);
     case 4705:
       return VUID_WRAP(VUID-StandaloneSpirv-IncomingCallableDataKHR-04705);
+    case 7119:
+      return VUID_WRAP(VUID-StandaloneSpirv-ShaderRecordBufferKHR-07119);
     case 4708:
       return VUID_WRAP(VUID-StandaloneSpirv-PhysicalStorageBuffer64-04708);
     case 4710:
@@ -2106,6 +2110,10 @@ std::string ValidationState_t::VkErrorID(uint32_t id,
       return VUID_WRAP(VUID-StandaloneSpirv-Uniform-06925);
     case 6997:
       return VUID_WRAP(VUID-StandaloneSpirv-SubgroupVoteKHR-06997);
+    case 7320:
+      return VUID_WRAP(VUID-StandaloneSpirv-ExecutionModel-07320);
+    case 7290:
+      return VUID_WRAP(VUID-StandaloneSpirv-Input-07290);
     default:
       return "";  // unknown id
   }
