@@ -39,7 +39,7 @@ jobs:
           second-branch: ${{ env.UPSTREAM_BRANCH }}
       - name: Issue
         if: steps.check.outputs.behind > 0
-        uses: JasonEtco/create-an-issue@v2.6.0
+        uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_ISSUE_SECRET }}
         with:
