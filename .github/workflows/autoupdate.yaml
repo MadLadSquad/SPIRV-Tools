@@ -3,7 +3,7 @@ name: Create automatic pr
 env:
   REPO_NAME: "KhronosGroup/SPIRV-Tools"
   BRANCH: "master"
-  UPSTREAM_BRANCH: "master"
+  UPSTREAM_BRANCH: "main"
   NAME: "SPIRV-Tools"
   
 on:
