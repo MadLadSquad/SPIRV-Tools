@@ -13,19 +13,11 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.17.2)
-if (POLICY CMP0048)
-  cmake_policy(SET CMP0048 NEW)
-endif()
-if (POLICY CMP0054)
-  # Avoid dereferencing variables or interpret keywords that have been
-  # quoted or bracketed.
-  # https://cmake.org/cmake/help/v3.1/policy/CMP0054.html
-  cmake_policy(SET CMP0054 NEW)
-endif()
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 project(spirv-tools)
-#enable_testing()
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
 set(SPIRV_TOOLS "SPIRV-Tools")
 
 include(GNUInstallDirs)
