@@ -386,15 +386,8 @@ fuzzer tests.
 ### Build using Bazel
 You can also use [Bazel](https://bazel.build/) to build the project.
 
-On linux:
 ```sh
-cd <spirv-dir>
-bazel build --cxxopt=-std=c++17 :all
-```
-
-On windows:
-```sh
-bazel build --cxxopt=/std:c++17 :all
+bazel build :all
 ```
 
 ### Build a node.js package using Emscripten
@@ -803,6 +796,7 @@ limitations under the License.
 [googletest-issue-610]: https://github.com/google/googletest/issues/610
 [effcee]: https://github.com/google/effcee
 [re2]: https://github.com/google/re2
+[abseil-cpp]: https://github.com/abseil/abseil-cpp
 [CMake]: https://cmake.org/
 [cpp-style-guide]: https://google.github.io/styleguide/cppguide.html
 [clang-sanitizers]: http://clang.llvm.org/docs/UsersManual.html#controlling-code-generation
