@@ -249,7 +249,7 @@ if(NOT COMMAND find_host_program)
 endif()
 
 # Tests require Python3
-find_host_package(PythonInterp 3 REQUIRED)
+find_host_package(Python3 REQUIRED)
 
 # Check for symbol exports on Linux.
 # At the moment, this check will fail on the OSX build machines for the Android NDK.
@@ -258,7 +258,7 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
   macro(spvtools_check_symbol_exports TARGET)
     if (NOT "${SPIRV_SKIP_TESTS}")
       add_test(NAME spirv-tools-symbol-exports-${TARGET}
-               COMMAND ${PYTHON_EXECUTABLE}
+               COMMAND Python3::Interpreter
                ${spirv-tools_SOURCE_DIR}/utils/check_symbol_exports.py "$<TARGET_FILE:${TARGET}>")
     endif()
   endmacro()
