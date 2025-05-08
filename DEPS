@@ -3,40 +3,12 @@ use_relative_paths = True
 vars = {
   'github': 'https://github.com',
 
-  'abseil_revision': 'a54cb45cb9fe1b181c237de640b918b7d5b01d24',
-
-  'effcee_revision': '514b52ec61609744d7e587d93a7ef9b60407ab45',
-
-  'googletest_revision': '9706f75b8f91c52a3840cf5d878a7f37ea10ef00',
-
-  # Use protobufs before they gained the dependency on abseil
-  'protobuf_revision': 'v21.12',
-
-  're2_revision': '61c4644171ee6b480540bf9e569cba06d9090b4b',
-
-  'spirv_headers_revision': '01e0577914a75a2569c846778c2f93aa8e6feddd',
-
-  'mimalloc_revision': '09a27098aa6e9286518bd9c74e6ffa7199c3f04e',
+  'spirv_headers_revision': 'master',
 }
 
 deps = {
-  'external/abseil_cpp':
-      Var('github') + '/abseil/abseil-cpp.git@' + Var('abseil_revision'),
-
-  'external/effcee':
-      Var('github') + '/google/effcee.git@' + Var('effcee_revision'),
-
-  'external/googletest':
-      Var('github') + '/google/googletest.git@' + Var('googletest_revision'),
-
-  'external/protobuf':
-      Var('github') + '/protocolbuffers/protobuf.git@' + Var('protobuf_revision'),
-
-  'external/re2':
-      Var('github') + '/google/re2.git@' + Var('re2_revision'),
-
   'external/spirv-headers':
-      Var('github') +  '/KhronosGroup/SPIRV-Headers.git@' +
+      Var('github') +  '/MadLadSquad/SPIRV-Headers.git@' +
           Var('spirv_headers_revision'),
 
   'external/mimalloc':
