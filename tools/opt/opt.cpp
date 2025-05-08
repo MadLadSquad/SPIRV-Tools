@@ -740,7 +740,6 @@ OptStatus ParseFlags(int argc, const char** argv,
                      spvtools::OptimizerOptions* optimizer_options) {
   std::vector<std::string> pass_flags;
   bool preserve_interface = true;
-  for (int argi = 1; argi < argc; ++argi) {
     const char* cur_arg = argv[argi];
     if ('-' == cur_arg[0]) {
       if (0 == strcmp(cur_arg, "--version")) {
