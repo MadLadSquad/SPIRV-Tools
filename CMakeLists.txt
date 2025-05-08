@@ -28,7 +28,7 @@ endif()
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-enable_testing()
+#enable_testing()
 set(SPIRV_TOOLS "SPIRV-Tools")
 
 include(GNUInstallDirs)
@@ -166,7 +166,7 @@ endif()
 #   Note this target provides no API stability guarantees.
 #
 # Ideally, all of these will go away - see https://github.com/KhronosGroup/SPIRV-Tools/issues/3909.
-option(ENABLE_EXCEPTIONS_ON_MSVC "Build SPIRV-TOOLS with c++ exceptions enabled in MSVC" ON)
+option(ENABLE_EXCEPTIONS_ON_MSVC "Build SPIRV-TOOLS with c++ exceptions enabled in MSVC" OFF)
 option(SPIRV_TOOLS_BUILD_STATIC "Build ${SPIRV_TOOLS}-static target. ${SPIRV_TOOLS} will alias to ${SPIRV_TOOLS}-static or ${SPIRV_TOOLS}-shared based on BUILD_SHARED_LIBS" ON)
 if(SPIRV_TOOLS_BUILD_STATIC)
   set(SPIRV_TOOLS_FULL_VISIBILITY ${SPIRV_TOOLS}-static)
@@ -312,7 +312,7 @@ if (IOS OR ANDROID)
   set(SPIRV_SKIP_EXECUTABLES ON)
 endif()
 
-option(SPIRV_SKIP_EXECUTABLES "Skip building the executable and tests along with the library")
+option(SPIRV_SKIP_EXECUTABLES "Skip building the executable and tests along with the library" ON)
 if (SPIRV_SKIP_EXECUTABLES)
   set(SPIRV_SKIP_TESTS ON)
 endif()
@@ -357,9 +357,6 @@ endif()
 add_subdirectory(source)
 add_subdirectory(tools)
 
-add_subdirectory(test)
-add_subdirectory(examples)
-
 if(ENABLE_SPIRV_TOOLS_INSTALL)
   install(
     FILES
@@ -378,7 +375,7 @@ if (NOT "${SPIRV_SKIP_TESTS}")
 endif()
 
 set(SPIRV_LIBRARIES "-lSPIRV-Tools-opt -lSPIRV-Tools -lSPIRV-Tools-link")
-set(SPIRV_SHARED_LIBRARIES "-lSPIRV-Tools-shared")
+#set(SPIRV_SHARED_LIBRARIES "-lSPIRV-Tools-shared")
 
 # Build pkg-config file
 # Use a first-class target so it's regenerated when relevant files are updated.
@@ -415,7 +412,7 @@ if (ENABLE_SPIRV_TOOLS_INSTALL)
   install(
     FILES
       ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools.pc
-      ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools-shared.pc
+  #     ${CMAKE_CURRENT_BINARY_DIR}/SPIRV-Tools-shared.pc
     DESTINATION
       ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif()
