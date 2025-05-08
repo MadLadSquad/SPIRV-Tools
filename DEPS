@@ -34,7 +34,7 @@ deps = {
       Var('github') + '/google/re2.git@' + Var('re2_revision'),
 
   'external/spirv-headers':
-      Var('github') +  '/KhronosGroup/SPIRV-Headers.git@' +
+      Var('github') +  '/MadLadSquad/SPIRV-Headers.git@' +
           Var('spirv_headers_revision'),
 }
 
